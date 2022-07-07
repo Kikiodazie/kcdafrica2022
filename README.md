@@ -46,8 +46,18 @@ kubectl get pod
 kubectl port-forward svc/kcdafricademo 8080:8080
 ```
 
+# ECR
 
+```
+aws ecr create-repository \
+--repository-name kcd-africa-demo-repo \
+--image-tag-mutability IMMUTABLE \
+--image-scanning-configuration scanOnPush=true
+```
 
+```
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <your_ecr_repository_uri>
+```
 
 # Working with EKS
 
