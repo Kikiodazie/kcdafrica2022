@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kcd-africa-demo-deployment
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kcd-africa-demo
+  template:
+    metadata:
+      labels:
+        app: kcd-africa-demo
+    spec:
+      containers:
+        - name: kcd-africa-springboot-image
+          image: 832983167489.dkr.ecr.us-east-1.amazonaws.com/kcd-africa-demo-repo:latest
+          ports:
+            - containerPort: 8080
